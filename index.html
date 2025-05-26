@@ -4,61 +4,220 @@
     <meta charset="UTF-8">
     <title>NDIS Assisted Living - Sign Up</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Inter font for clarity and accessibility -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        body { 
-            font-family: Arial, sans-serif; background: #f3f7fb; margin: 0; 
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background: #f7fafd;
+            margin: 0; padding: 0;
         }
         .container {
-            max-width: 400px; margin: 60px auto; background: #fff; 
-            padding: 2rem; border-radius: 14px; box-shadow: 0 8px 30px rgba(0,0,0,0.09);
+            max-width: 410px;
+            background: #fff;
+            margin: 56px auto;
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(80,110,140,0.09);
+            padding: 2.1em 1.5em 2em 1.5em;
         }
-        h1 { 
-            text-align: center; color: #205075;
+        h1 {
+            font-weight: 600;
+            font-size: 2rem;
+            margin-bottom: .8em;
+            color: #1856a7;
+            text-align: center;
+        }
+        .step {
+            font-size: 1.15em;
+            margin-bottom: .7em;
+            font-weight: 600;
+            color: #1a3151;
         }
         label {
-            font-weight: 600; margin-bottom: 0.2em; display: block;
+            display: block;
+            font-weight: 600;
+            margin-bottom: .3em;
+            margin-top: 1.1em;
+            color: #2b415f;
         }
-        input, textarea {
-            width: 100%; padding: 0.7em; margin-bottom: 1.2em;
-            border: 1px solid #b3c0ce; border-radius: 6px; font-size: 1em;
+        input, textarea, select {
+            width: 100%;
+            padding: .65em;
+            margin-bottom: .6em;
+            border: 1px solid #d1d7e1;
+            border-radius: 7px;
+            font-size: 1em;
+            background: #f9fbfd;
+            transition: border .18s;
+        }
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border: 1.5px solid #2179e8;
+            background: #f5faff;
         }
         button {
-            width: 100%; padding: 0.8em; background: #205075; 
-            color: #fff; border: none; border-radius: 8px; font-size: 1em;
-            font-weight: 600; cursor: pointer;
+            width: 100%;
+            margin-top: 1.3em;
+            background: #1856a7;
+            color: #fff;
+            padding: .95em 0;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 9px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background .18s;
         }
         button:hover {
-            background: #3288a8;
+            background: #258cf4;
         }
-        .success { color: green; text-align: center; margin-top: 1em; }
+        .info {
+            background: #eaf5ff;
+            color: #2169b1;
+            border-radius: 7px;
+            padding: .75em 1em;
+            font-size: 1em;
+            margin-bottom: 1.3em;
+        }
+        .summary {
+            background: #f4f9f6;
+            color: #197259;
+            border-radius: 7px;
+            padding: .9em 1.1em;
+            font-size: 1em;
+            margin-top: 1.5em;
+            margin-bottom: 1em;
+            display: none;
+        }
+        .success {
+            color: #14803c;
+            text-align: center;
+            margin-top: 1.3em;
+            font-weight: 600;
+        }
+        .cookie-note {
+            background: #fffaea;
+            color: #7a6702;
+            border-radius: 7px;
+            padding: .55em .9em;
+            margin-bottom: 1.2em;
+            font-size: .97em;
+            border: 1px solid #fff4be;
+        }
+        @media (max-width: 540px) {
+            .container {
+                margin: 16px 2vw;
+                padding: 1em .5em 2em .5em;
+            }
+            h1 { font-size: 1.35rem; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>NDIS Sign Up</h1>
-        <form id="signupForm">
-            <label for="name">Full Name *</label>
-            <input type="text" id="name" name="name" required>
+        <h1>NDIS Assisted Living Sign Up</h1>
+        <div class="info">
+            Welcome! This quick sign-up helps us match you with the right supports. All details are kept private.
+        </div>
+        <div class="cookie-note">
+            This website uses cookies to remember your sign-up information and preferences. You can see what was saved below after signing up.
+        </div>
+        <form id="signupForm" autocomplete="off">
+            <div class="step">1. Your Details</div>
+            <label for="fullName">Full Name *</label>
+            <input type="text" id="fullName" name="fullName" required maxlength="60" autocomplete="name">
 
-            <label for="email">Email *</label>
-            <input type="email" id="email" name="email" required>
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required maxlength="60" autocomplete="email">
 
-            <label for="message">Your Message</label>
-            <textarea id="message" name="message" rows="3"></textarea>
+            <label for="age">Your Age Range *</label>
+            <select id="age" name="age" required>
+                <option value="">Select age range</option>
+                <option value="18-24">18-24</option>
+                <option value="25-34">25-34</option>
+                <option value="35-44">35-44</option>
+                <option value="45-54">45-54</option>
+                <option value="55-64">55-64</option>
+                <option value="65+">65+</option>
+            </select>
 
-            <button type="submit">Sign Up</button>
+            <div class="step">2. Your Needs</div>
+            <label for="needs">How can we help you?</label>
+            <textarea id="needs" name="needs" rows="3" maxlength="240" placeholder="E.g. Supported accommodation, daily help, therapies..."></textarea>
+            
+            <div class="step">3. Confirm</div>
+            <button type="submit">Submit Sign Up</button>
         </form>
-        <div id="formMsg"></div>
+        <div class="summary" id="summaryBox"></div>
+        <div class="success" id="formMsg"></div>
+        <div id="cookieDataBox" style="display:none; margin-top:2em;"></div>
     </div>
-
     <script>
-    // This only displays a fake success for now (since no backend yet!)
-    document.getElementById('signupForm').onsubmit = function(e) {
-        e.preventDefault();
-        document.getElementById('formMsg').innerHTML = 
-            '<div class="success">Thank you for signing up! We will contact you soon.</div>';
-        this.reset();
-    };
-    </script>
-</body>
-</html>
+        // Simple cookie helpers
+        function setCookie(name, value, days) {
+            let expires = "";
+            if (days) {
+                const date = new Date();
+                date.setTime(date.getTime() + (days*24*60*60*1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + encodeURIComponent(value) + expires + "; path=/";
+        }
+        function getCookie(name) {
+            let nameEQ = name + "=";
+            let ca = document.cookie.split(';');
+            for(let i=0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                if (c.indexOf(nameEQ) == 0) return decodeURIComponent(c.substring(nameEQ.length,c.length));
+            }
+            return null;
+        }
+
+        // Step-by-step interaction: on submit, show summary & then thank you
+        document.getElementById('signupForm').onsubmit = function(e) {
+            e.preventDefault();
+            // Collect values
+            const name = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const age = document.getElementById('age').value.trim();
+            const needs = document.getElementById('needs').value.trim();
+            // Progressive disclosure: show summary for user to confirm
+            const summaryBox = document.getElementById('summaryBox');
+            summaryBox.innerHTML = `
+                <strong>Summary:</strong><br>
+                <b>Name:</b> ${name}<br>
+                <b>Email:</b> ${email}<br>
+                <b>Age:</b> ${age}<br>
+                <b>Needs:</b> ${needs ? needs : '(none listed)'}<br>
+                <button id="confirmBtn" style="margin-top:1em;">Confirm & Send</button>
+                <button id="editBtn" style="margin-top:1em;margin-left:10px;background:#eee;color:#1856a7;">Edit</button>
+            `;
+            summaryBox.style.display = "block";
+            document.getElementById('signupForm').style.display = "none";
+            document.getElementById('formMsg').innerHTML = "";
+
+            // Confirm action
+            document.getElementById('confirmBtn').onclick = function() {
+                // Store in cookie for 30 days
+                setCookie('ndis_signup', JSON.stringify({name, email, age, needs}), 30);
+                summaryBox.style.display = "none";
+                document.getElementById('formMsg').innerHTML =
+                    "Thank you for signing up! We’ll be in touch soon.<br><br>See below for the info saved in your browser (cookie):";
+                // Show saved cookie data to user
+                showCookieData();
+            };
+            // Edit action
+            document.getElementById('editBtn').onclick = function() {
+                summaryBox.style.display = "none";
+                document.getElementById('signupForm').style.display = "block";
+            };
+        };
+
+        // Function to display the cookie data (for demo/clarity)
+        function showCookieData() {
+            const cookieData = getCookie('ndis_signup');
+            const box = document.getElementById('cookieDataBox');
+            if (cookieData) {
+                const parsed = JSON.parse(cookieData);
+                bo
